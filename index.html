@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АНО «ДОБРОЕ ПРАВО» - Защита прав детей-инвалидов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a6dcc;
+            --secondary: #ff6b35;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #0d4a9e);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 700px;
+            padding: 30px;
+            background: rgba(26, 109, 204, 0.8);
+            border-radius: 10px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        .btn:hover {
+            background: #e05a2a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Section styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        /* About section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(255,107,53,0.2), rgba(255,107,53,0));
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            margin: 25px 0;
+        }
+        
+        /* Services section */
+        .services {
+            background-color: #eef7ff;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Collaboration section */
+        .collab-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .benefit {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        /* Contact section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary), #0d4a9e);
+            color: white;
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero-content {
+                margin: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-balance-scale"></i>
+                АНО «ДОБРОЕ ПРАВО»
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Наши услуги</a></li>
+                    <li><a href="#collab">Сотрудничество</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>НКО и Бизнес: Механики Взаимодействия</h1>
+                <p>Защищаем детское право на счастье в судебном порядке</p>
+                <a href="#contact" class="btn">Сотрудничать с нами</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нас</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Защищаем детское право на счастье в судебном порядке</h2>
+                    <p>Наши адвокаты <strong>бесплатно</strong> оказывают юридическую помощь детям-инвалидам в вопросах защиты их прав и законных интересов.</p>
+                    <p>Мы помогли десяткам детей получить медицинскую, социальную и материальную помощь гарантированную государством.</p>
+                    
+                    <div class="highlight">
+                        <p>«Доброе право» - это бесплатная правовая помощь для детей-инвалидов и их семей</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>СУДЕБНАЯ ЗАЩИТА И ЮРИДИЧЕСКАЯ ПОМОЩЬ</h3>
+                    <p>Представительство в судах, взыскание алиментов, помощь в присуждении инвалидности</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-book"></i>
+                    <h3>ПРОСВЕТИТЕЛЬСКАЯ РАБОТА</h3>
+                    <p>Издание и распространение бесплатных брошюр на тему защиты прав детей-инвалидов</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-users"></i>
+                    <h3>СОЦИАЛИЗАЦИЯ</h3>
+                    <p>Проведение мероприятий по социализации детей-инвалидов: посещение музеев, игровых клубов, культурных мероприятий</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>ЛЕКТОРИИ</h3>
+                    <p>Проведение лекций и семинаров для родителей детей-инвалидов и начинающих юристов по вопросам перечня и процедур получения льгот</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section id="collab" class="collaboration">
+        <div class="container">
+            <h2 class="section-title">Сотрудничество с бизнесом</h2>
+            
+            <div class="collab-content">
+                <h3>Социально-ориентированный маркетинг</h3>
+                <p><strong>Социальный маркетинг — это комплексная работа компаний, направленная на одновременное продвижение бренда и социальных ценностей.</strong></p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <h4>Ваши преимущества совместных акций:</h4>
+                        <ul>
+                            <li>повышение продаж;</li>
+                            <li>привлечение внимания к бренду;</li>
+                            <li>повышение лояльности среди покупателей и клиентов.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="benefit">
+                        <h4>Формы сотрудничества:</h4>
+                        <ul>
+                            <li>Наклейки с QR-кодом на товары</li>
+                            <li>Добавление кнопки на сайт</li>
+                            <li>Коллаборация в социальных сетях</li>
+                            <li>E-mail рассылка</li>
+                            <li>Проведение совместных мероприятий</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Как мы видим сотрудничество с ИП и франшизерами?</h3>
+                <ol>
+                    <li>Подписываем договор с тестовым периодом до 6 мес. В течение этого времени разрабатываем совместную маркетинговую стратегию и тестируем ее.</li>
+                    <li>Анализируем результаты и определяем сумму пожертвований. Если после тестового периода нет результатов, то можно прекратить сотрудничество или поменять формат и снова пройти тестовый период.</li>
+                </ol>
+                
+                <h3>Зачем благотворительность вам и вашей компании?</h3>
+                <ul>
+                    <li>Создание положительной репутации</li>
+                    <li>Повышение инвестиционной привлекательности</li>
+                    <li>Развитие бренда компании</li>
+                    <li>Тимбилдинг</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами!</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p>Мы открыты для сотрудничества с бизнесом, индивидуальными предпринимателями и франшизерами. Вместе мы можем сделать детство детей-инвалидов счастливее!</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:dobroepravo2017@yandex.ru" class="contact-link">
+                            <i class="fas fa-envelope"></i> dobroepravo2017@yandex.ru
+                        </a>
+                        <a href="https://t.me/dobroepravoru" class="contact-link" target="_blank">
+                            <i class="fab fa-telegram"></i> Telegram
+                        </a>
+                        <a href="http://www.dobroepravo.ru" class="contact-link" target="_blank">
+                            <i class="fas fa-globe"></i> Наш сайт
+                        </a>
+                        <a href="https://m.vk.com/public216304401" class="contact-link" target="_blank">
+                            <i class="fab fa-vk"></i> ВКонтакте
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">АНО «ДОБРОЕ ПРАВО»</div>
+            <p>Каждый день мы помогаем тем, кто не способен помочь себе сам.</p>
+            <div class="copyright">
+                &copy; 2023 АНО «ДОБРОЕ ПРАВО». Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
