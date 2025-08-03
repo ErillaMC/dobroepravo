@@ -5,26 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АНО «ДОБРОЕ ПРАВО» - Защита прав детей-инвалидов</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a6dcc;
-            --secondary: #ff6b35;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #28a745;
+            --primary: #6b9aff;
+            --secondary: #ff9e64;
+            --dark-bg: #0f1117;
+            --dark-card: #1a1d27;
+            --dark-border: #2a2f40;
+            --light-text: #e0e5f0;
+            --light-gray: #a0a7b8;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
-            background-color: #f0f8ff;
-            color: #333;
-            line-height: 1.6;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
         }
         
         .container {
@@ -36,13 +47,13 @@
         
         /* Header styles */
         header {
-            background: linear-gradient(135deg, var(--primary), #0d4a9e);
-            color: white;
+            background: rgba(15, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--dark-border);
         }
         
         .header-container {
@@ -52,15 +63,17 @@
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 1.6rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
+            color: var(--light-text);
         }
         
         .logo i {
             margin-right: 10px;
             color: var(--secondary);
+            font-size: 1.8rem;
         }
         
         nav ul {
@@ -73,25 +86,27 @@
         }
         
         nav ul li a {
-            color: white;
+            color: var(--light-gray);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
             padding: 5px 10px;
             border-radius: 4px;
+            font-size: 1.05rem;
         }
         
-        nav ul li a:hover {
-            background-color: rgba(255,255,255,0.1);
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
         }
         
         /* Hero section */
         .hero {
-            background: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            height: 500px;
+            height: 90vh;
+            min-height: 700px;
             display: flex;
             align-items: center;
             position: relative;
+            overflow: hidden;
         }
         
         .hero::before {
@@ -101,60 +116,95 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(15, 17, 23, 0.9) 0%, rgba(15, 17, 23, 0.6) 100%);
+            z-index: 1;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a1d27 0%, #0c0e15 100%);
+            z-index: 0;
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
-            color: white;
             max-width: 700px;
-            padding: 30px;
-            background: rgba(26, 109, 204, 0.8);
-            border-radius: 10px;
+            padding: 0 20px;
         }
         
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             margin-bottom: 20px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            line-height: 1.2;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
+            font-size: 1.25rem;
+            margin-bottom: 35px;
+            color: var(--light-gray);
+            max-width: 600px;
         }
         
         .btn {
             display: inline-block;
             background: var(--secondary);
-            color: white;
-            padding: 12px 30px;
+            color: var(--dark-bg);
+            padding: 14px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
         }
         
         .btn:hover {
-            background: #e05a2a;
+            color: white;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
         
         /* Section styles */
         section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary);
+            margin-bottom: 70px;
             position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: white;
+            display: inline-block;
         }
         
         .section-title::after {
@@ -163,9 +213,10 @@
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 4px;
             background: var(--secondary);
+            border-radius: 2px;
         }
         
         /* About section */
@@ -181,25 +232,45 @@
         
         .about-text h2 {
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
         }
         
         .about-text p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-size: 1.15rem;
         }
         
         .highlight {
-            background: linear-gradient(120deg, rgba(255,107,53,0.2), rgba(255,107,53,0));
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary);
-            margin: 25px 0;
+            background: rgba(107, 154, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            margin: 35px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(107, 154, 255, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .highlight p {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: white;
         }
         
         /* Services section */
         .services {
-            background-color: #eef7ff;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #0a0c12 100%);
         }
         
         .services-grid {
@@ -209,58 +280,170 @@
         }
         
         .service-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
             text-align: center;
+            border: 1px solid var(--dark-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
         
         .service-card i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            background: rgba(107, 154, 255, 0.1);
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+            text-align: center;
         }
         
         .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .service-card p {
+            color: var(--light-gray);
+            font-size: 1.1rem;
         }
         
         /* Collaboration section */
         .collab-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: var(--dark-card);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid var(--dark-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .collab-content::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(107, 154, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .collab-content h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+        
+        .collab-content p, .collab-content li {
+            color: var(--light-gray);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .collab-content strong {
+            color: white;
+            font-weight: 500;
         }
         
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px;
             margin: 40px 0;
         }
         
         .benefit {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 3px solid var(--primary);
+            background: rgba(26, 29, 39, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--dark-border);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .benefit ul {
+            padding-left: 20px;
+        }
+        
+        .benefit li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .benefit li::before {
+            content: '•';
+            color: var(--primary);
+            position: absolute;
+            left: -15px;
+        }
+        
+        ol, ul {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+        
+        ol li, ul li {
+            margin-bottom: 12px;
         }
         
         /* Contact section */
         .contact {
-            background: linear-gradient(135deg, var(--primary), #0d4a9e);
-            color: white;
+            background: linear-gradient(135deg, #0a0c12 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom left, rgba(107, 154, 255, 0.05) 0%, transparent 70%);
+            z-index: 0;
         }
         
         .contact .section-title {
@@ -270,61 +453,117 @@
         .contact-container {
             display: flex;
             gap: 40px;
+            position: relative;
+            z-index: 1;
         }
         
         .contact-info {
             flex: 1;
         }
         
+        .contact-info p {
+            font-size: 1.15rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
         .contact-links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
         }
         
         .contact-link {
             display: flex;
             align-items: center;
-            color: white;
+            color: var(--light-gray);
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: rgba(26, 29, 39, 0.5);
+            border: 1px solid var(--dark-border);
+            max-width: 350px;
         }
         
         .contact-link i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            margin-right: 15px;
+            font-size: 1.4rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(107, 154, 255, 0.1);
+            border-radius: 50%;
         }
         
         .contact-link:hover {
-            color: var(--secondary);
+            color: white;
             transform: translateX(5px);
+            border-color: var(--primary);
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 0 20px;
+            background: #0a0c12;
+            color: var(--light-gray);
+            padding: 60px 0 30px;
             text-align: center;
+            border-top: 1px solid var(--dark-border);
         }
         
         .footer-logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
             margin-bottom: 20px;
             color: var(--secondary);
         }
         
         .copyright {
-            margin-top: 30px;
+            margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: #aaa;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+            color: #7a8195;
+        }
+        
+        /* Decorations */
+        .decor-circle {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 158, 100, 0.1) 0%, transparent 70%);
+            top: 10%;
+            right: -100px;
+        }
+        
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(107, 154, 255, 0.1) 0%, transparent 70%);
+            bottom: 20%;
+            left: -50px;
         }
         
         /* Responsive styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -337,19 +576,20 @@
             }
             
             nav ul li {
-                margin: 5px 10px;
+                margin: 8px 12px;
             }
             
             .hero {
-                height: 400px;
-            }
-            
-            .hero-content {
-                margin: 0 20px;
+                height: 80vh;
+                min-height: 600px;
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
             
             .about-content {
@@ -359,20 +599,50 @@
             .contact-container {
                 flex-direction: column;
             }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .collab-content {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                height: 85vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-card {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Decorations -->
+    <div class="decor-circle circle-1"></div>
+    <div class="decor-circle circle-2"></div>
+    
     <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-balance-scale"></i>
+                <i class="fas fa-hands-helping"></i>
                 АНО «ДОБРОЕ ПРАВО»
             </div>
             <nav>
                 <ul>
-                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#about" class="active">О нас</a></li>
                     <li><a href="#services">Наши услуги</a></li>
                     <li><a href="#collab">Сотрудничество</a></li>
                     <li><a href="#contact">Контакты</a></li>
@@ -383,10 +653,11 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-background"></div>
         <div class="container">
             <div class="hero-content">
                 <h1>НКО и Бизнес: Механики Взаимодействия</h1>
-                <p>Защищаем детское право на счастье в судебном порядке</p>
+                <p>Защищаем детское право на счастье в судебном порядке. Бесплатная юридическая помощь детям-инвалидам и их семьям.</p>
                 <a href="#contact" class="btn">Сотрудничать с нами</a>
             </div>
         </div>
@@ -395,7 +666,9 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">О нас</h2>
+            <div class="section-title">
+                <h2>О нас</h2>
+            </div>
             <div class="about-content">
                 <div class="about-text">
                     <h2>Защищаем детское право на счастье в судебном порядке</h2>
@@ -405,6 +678,8 @@
                     <div class="highlight">
                         <p>«Доброе право» - это бесплатная правовая помощь для детей-инвалидов и их семей</p>
                     </div>
+                    
+                    <p>Наша миссия - обеспечить каждому ребенку с ограниченными возможностями здоровья доступ к правосудию и социальной защите.</p>
                 </div>
             </div>
         </div>
@@ -413,7 +688,9 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+            </div>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-gavel"></i>
@@ -436,7 +713,7 @@
                 <div class="service-card">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <h3>ЛЕКТОРИИ</h3>
-                    <p>Проведение лекций и семинаров для родителей детей-инвалидов и начинающих юристов по вопросам перечня и процедур получения льгот</p>
+                    <p>Проведение лекций и семинаров для родителей детей-инвалидов и начинающих юристов</p>
                 </div>
             </div>
         </div>
@@ -445,7 +722,9 @@
     <!-- Collaboration Section -->
     <section id="collab" class="collaboration">
         <div class="container">
-            <h2 class="section-title">Сотрудничество с бизнесом</h2>
+            <div class="section-title">
+                <h2>Сотрудничество с бизнесом</h2>
+            </div>
             
             <div class="collab-content">
                 <h3>Социально-ориентированный маркетинг</h3>
@@ -493,7 +772,9 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Свяжитесь с нами!</h2>
+            <div class="section-title">
+                <h2>Свяжитесь с нами!</h2>
+            </div>
             
             <div class="contact-container">
                 <div class="contact-info">
@@ -538,7 +819,26 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                
+                // Update active nav link
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
             });
+        });
+        
+        // Add scroll animation to elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.service-card, .benefit, .highlight').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
